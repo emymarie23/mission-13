@@ -1,0 +1,143 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="fr">\
+<head>\
+  <meta charset="UTF-8" />\
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
+  <title>Squid Game - Mission 13</title>\
+  <style>\
+    body \{\
+      background-color: black;\
+      color: white;\
+      font-family: 'Arial', sans-serif;\
+      text-align: center;\
+      padding: 20px;\
+      background-size: cover;\
+      background-position: center;\
+    \}\
+    .hidden \{\
+      display: none;\
+    \}\
+    .btn \{\
+      background-color: #e50914;\
+      color: white;\
+      padding: 10px 20px;\
+      border: none;\
+      margin-top: 20px;\
+      font-size: 18px;\
+      border-radius: 8px;\
+      cursor: pointer;\
+    \}\
+    input[type="text"], input[type="number"] \{\
+      padding: 10px;\
+      font-size: 16px;\
+      border-radius: 5px;\
+      border: none;\
+      margin-top: 10px;\
+    \}\
+    .page \{\
+      max-width: 600px;\
+      margin: auto;\
+      background-color: rgba(0, 0, 0, 0.7);\
+      padding: 20px;\
+      border-radius: 10px;\
+    \}\
+  </style>\
+</head>\
+<body>\
+  <audio id="bg-music" autoplay loop>\
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/22/audio_6e98cc3c41.mp3?filename=squid-game-epic-intro-110984.mp3" type="audio/mpeg">\
+  </audio>\
+\
+  <audio id="wave-sound" loop>\
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5f88148689.mp3?filename=seaside-waves-110877.mp3" type="audio/mpeg">\
+  </audio>\
+\
+  <div id="page1" class="page" style="background-image: url('https://cdn.pixabay.com/photo/2021/11/02/19/03/squid-game-6764134_1280.jpg');">\
+    <h1>Squid Game : Mission 13</h1>\
+    <p>Bienvenue, Joueur 013 - Th\'e9o.<br>\
+      Tu as \'e9t\'e9 s\'e9lectionn\'e9 pour une s\'e9rie d\'92\'e9preuves secr\'e8tes.<br>\
+      R\'e9sous les \'e9nigmes pour d\'e9bloquer ton week-end d\'92anniversaire !</p>\
+    <button class="btn" onclick="goToPage(2)">Commencer la mission</button>\
+  </div>\
+\
+  <div id="page2" class="page hidden">\
+    <h2>\'c9preuve 1 : M\'e9moire d\'92une boule</h2>\
+    <p>Hier, tu as roul\'e9, frapp\'e9, vis\'e9... Il y avait des quilles.<br>\
+      Tape le mot secret :</p>\
+    <input type="text" id="input1" placeholder="Ta r\'e9ponse ici">\
+    <br><button class="btn" onclick="checkAnswer(1, 'bowling')">Valider</button>\
+    <p id="error1" style="color:red"></p>\
+  </div>\
+\
+  <div id="page3" class="page hidden" style="background-image: url('https://cdn.pixabay.com/photo/2020/10/08/17/32/laser-5637176_1280.jpg'); background-size: cover; background-position: center;">\
+    <h2>\'c9preuve 2 : Tirs silencieux</h2>\
+    <p>Ce soir, tu entreras dans une salle remplie de lasers.<br>\
+      Combien de rayons laser vois-tu ?</p>\
+    <input type="number" id="input2" placeholder="0">\
+    <br><button class="btn" onclick="checkAnswer(2, '8')">Valider</button>\
+    <p id="error2" style="color:red"></p>\
+  </div>\
+\
+  <div id="page4" class="page hidden" style="background-image: url('https://cdn.pixabay.com/photo/2017/03/27/13/42/beach-2179624_1280.jpg'); background-size: cover; background-position: center;">\
+    <h2>\'c9preuve 3 : Danse avec le vent</h2>\
+    <p>Samedi, Tu glisseras sur l\'92eau, guid\'e9 par le vent. Quelle est cette activit\'e9 ?</p>\
+    <input type="text" id="input3" placeholder="Ta r\'e9ponse ici">\
+    <br><button class="btn" onclick="checkAnswer(3, 'voile')">Valider</button>\
+    <p id="error3" style="color:red"></p>\
+  </div>\
+\
+  <div id="page5" class="page hidden" style="background-image: url('https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif'); background-size: cover; background-position: center;">\
+    <h2>Mission accomplie !</h2>\
+    <p>F\'e9licitations Joueur 013 - Th\'e9o \uc0\u55356 \u57225 <br>\
+      Tu as r\'e9ussi les 3 \'e9preuves du jeu.<br>\
+      Ton week-end peut commencer !</p>\
+    <p>\uc0\u55356 \u57218  Bon anniversaire ! \u55356 \u57224 </p>\
+  </div>\
+\
+  <audio id="success-sound">\
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1bb2be442.mp3?filename=success-1-6297.mp3" type="audio/mpeg">\
+  </audio>\
+  <audio id="fail-sound">\
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_44f316546c.mp3?filename=error-2-126514.mp3" type="audio/mpeg">\
+  </audio>\
+\
+  <script>\
+    function goToPage(n) \{\
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));\
+      document.getElementById('page' + n).classList.remove('hidden');\
+\
+      if (n === 4) \{\
+        document.getElementById('wave-sound').play();\
+      \} else \{\
+        document.getElementById('wave-sound').pause();\
+        document.getElementById('wave-sound').currentTime = 0;\
+      \}\
+    \}\
+\
+    function playSound(id) \{\
+      const sound = document.getElementById(id);\
+      if (sound) sound.play();\
+    \}\
+\
+    function checkAnswer(step, expected) \{\
+      let input = document.getElementById('input' + step).value.trim().toLowerCase();\
+      let error = document.getElementById('error' + step);\
+      if (input === expected.toLowerCase()) \{\
+        playSound('success-sound');\
+        goToPage(step + 2);\
+      \} else \{\
+        playSound('fail-sound');\
+        error.textContent = 'Mauvaise r\'e9ponse, essaie encore. Pour avoir un indice tu dois envoyer le code 0013 au ma\'eetre du jeu !';\
+      \}\
+    \}\
+  </script>\
+</body>\
+</html>\
+}
